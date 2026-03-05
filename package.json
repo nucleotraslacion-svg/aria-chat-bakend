@@ -1,0 +1,14 @@
+{
+  "name": "aria-chat-bakend",
+  "version": "1.0.0",
+  "description": "Backend HTTP para comunicarse con ARIABebe",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2"
+  },
+  "license": "ISC"
+}
