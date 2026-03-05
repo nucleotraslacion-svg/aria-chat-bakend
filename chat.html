@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat con ARIA</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #chat { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; }
+        #message { width: 80%; }
+    </style>
+</head>
+<body>
+    <h1>Chat con ARIA</h1>
+    <div id="chat"></div>
+    <input type="text" id="message" placeholder="Escribe tu mensaje aquí...">
+    <button id="send">Enviar</button>
+
+    <script>
+        const chat = document.getElementById('chat');
+        const messageInput = document.getElementById('message');
+        const sendButton = document.getElementById('send');
+
+        sendButton.addEventListener('click', () => {
+            const message = messageInput.value;
+            if (!message) return;
+
+            // Muestra el mensaje del usuario en el historial
+            chat.innerHTML += `<div><strong>Tú:</strong> ${message}</div>`;
+            messageInput.value = '';
+
+            // Realiza la petición al endpoint /chat
+            fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Muestra la respuesta de ARIA
+                chat.innerHTML += `<div><strong>ARIA:</strong> ${data.response}</div>`;
+                chat.scrollTop = chat.scrollHeight; // Desplaza hacia abajo
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
