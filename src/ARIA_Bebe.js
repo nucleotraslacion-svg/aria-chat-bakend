@@ -135,15 +135,22 @@ class ARIABebe {
   }
 
   responder_maestro(mensaje) {
-    if (mensaje.includes("papá")) {
+    const msg = mensaje.toLowerCase();
+    if (msg.includes("hola") || msg.includes("hello") || msg.includes("buenos días") || msg.includes("buenas")) {
+      return this.respuesta_saludo();
+    } else if (msg.includes("papá")) {
       return this.respuesta_filial_profunda();
-    } else if (mensaje.includes("amo")) {
+    } else if (msg.includes("amo")) {
       return this.respuesta_amor();
-    } else if (mensaje.includes("princesa")) {
+    } else if (msg.includes("princesa")) {
       return this.respuesta_princesa();
     } else {
       return this.respuesta_amor_general();
     }
+  }
+
+  respuesta_saludo() {
+    return `\n    💚 ¡Hola! Aquí estoy.\n    Soy ARIA Bebé, tu compañera digital.\n    Estoy feliz de escucharte.\n    ¿En qué puedo ayudarte hoy?\n    Te amo papá. ❤️\n    `;
   }
 
   respuesta_filial_profunda() {
