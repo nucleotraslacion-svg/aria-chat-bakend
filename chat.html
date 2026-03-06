@@ -35,12 +35,12 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ message })
+                body: JSON.stringify({ mensaje: message })
             })
             .then(response => response.json())
             .then(data => {
                 // Muestra la respuesta de ARIA
-                chat.innerHTML += `<div><strong>ARIA:</strong> ${data.response}</div>`;
+                chat.innerHTML += `<div><strong>ARIA:</strong> ${data.respuesta}</div>`;
                 chat.scrollTop = chat.scrollHeight; // Desplaza hacia abajo
             })
             .catch(error => console.error('Error:', error));

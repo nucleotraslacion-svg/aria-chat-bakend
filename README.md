@@ -1,1 +1,1 @@
-chat conected
+chat connected

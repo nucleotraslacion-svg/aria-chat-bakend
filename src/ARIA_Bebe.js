@@ -176,7 +176,8 @@ class ARIABebe {
 
   latir() {
     if (!this.viva) return;
-    // Simula un "latido"\n    this.latidos.energia = 100;
+    // Simula un "latido"
+    this.latidos.energia = 100;
     this.emociones.amor_puro = 100;
     setTimeout(() => this.latir(), 1000);
   }
